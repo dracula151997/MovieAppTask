@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardUseCompatPadding="true"
-    android:layout_height="wrap_content">
-
+    android:layout_height="wrap_content"
+    app:cardUseCompatPadding="true">
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -15,17 +14,17 @@
         <ImageView
             android:id="@+id/list_item_popular_people_image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="150dp"
             android:scaleType="fitXY"
             tools:srcCompat="@tools:sample/avatars" />
 
         <TextView
+            android:id="@+id/list_item_popular_people_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/list_item_popular_people_image"
+            android:gravity="center_horizontal"
             android:padding="8dp"
-            android:id="@+id/list_item_popular_people_text"
-            android:text="People Name"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Subhead" />
 

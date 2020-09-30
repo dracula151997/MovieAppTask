@@ -9,4 +9,5 @@
     <string name="biography">Biography</string>
     <string name="person_images">Person Images</string>
     <string name="save_in_gallery">Save in Gallery</string>
+    <string name="connection_problem">Connection Problem!!</string>
 </resources>

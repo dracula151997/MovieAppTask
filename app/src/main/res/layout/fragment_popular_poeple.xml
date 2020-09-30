@@ -6,6 +6,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.PopularPeopleFragment">
 
+    <ProgressBar
+        android:id="@+id/loading_data_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/error_msg_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/connection_problem"
+        android:visibility="gone"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
