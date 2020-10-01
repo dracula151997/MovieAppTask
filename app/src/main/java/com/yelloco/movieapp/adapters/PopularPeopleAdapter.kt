@@ -11,7 +11,7 @@ import com.yelloco.movieapp.R
 import com.yelloco.movieapp.models.popular.Person
 import com.yelloco.movieapp.network.NetworkingState
 
-class PopularPeopleAdapter(val context: Context, val itemClickListener: OnItemClickListener) :
+class PopularPeopleAdapter(val context: Context, private val itemClickListener: OnItemClickListener) :
     PagedListAdapter<Person, RecyclerView.ViewHolder>(diffCallback()) {
 
     val PEOPLE_VIEW_TYPE = 1

@@ -153,14 +153,14 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Title" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/person_images"
+            android:id="@+id/person_images_recycler"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/person_image"
             android:layout_marginTop="8dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="3"
-            tools:listitem="@layout/list_item_popular_people" />
+            tools:listitem="@layout/list_item_profile_images" />
 
 
     </RelativeLayout>

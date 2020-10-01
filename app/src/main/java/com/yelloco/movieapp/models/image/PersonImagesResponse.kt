@@ -5,13 +5,13 @@ import com.google.gson.annotations.SerializedName
 data class PersonImagesResponse(
 
 	@field:SerializedName("profiles")
-	val profiles: List<ProfilesItem>,
+	val profiles: List<ProfileImage>,
 
 	@field:SerializedName("id")
 	val id: Int
 )
 
-data class ProfilesItem(
+data class ProfileImage(
 
 	@field:SerializedName("file_path")
 	val filePath: String,

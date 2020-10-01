@@ -13,6 +13,7 @@
     <com.google.android.material.button.MaterialButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/save_photo_in_gallery"
         android:layout_below="@id/original_photo_image_view"
         android:layout_centerInParent="true"
         android:text="@string/save_in_gallery" />

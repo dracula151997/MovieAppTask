@@ -17,5 +17,14 @@
     <fragment
         android:id="@+id/personDetailsFragment"
         android:name="com.yelloco.movieapp.ui.PersonDetailsFragment"
-        android:label="PersonDetailsFragment" />
+        android:label="PersonDetailsFragment" >
+        <action
+            android:id="@+id/action_personDetailsFragment_to_originalPhotoFragment"
+            app:destination="@id/originalPhotoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/originalPhotoFragment"
+        android:name="com.yelloco.movieapp.ui.OriginalPhotoFragment"
+        android:label="fragment_original_photo"
+        tools:layout="@layout/fragment_original_photo" />
 </navigation>
