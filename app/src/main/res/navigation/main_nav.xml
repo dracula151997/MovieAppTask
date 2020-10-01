@@ -9,5 +9,13 @@
         android:id="@+id/popularPeopleFragment"
         android:name="com.yelloco.movieapp.ui.PopularPeopleFragment"
         android:label="fragment_popular_poeple"
-        tools:layout="@layout/fragment_popular_poeple" />
+        tools:layout="@layout/fragment_popular_poeple" >
+        <action
+            android:id="@+id/action_popularPeopleFragment_to_personDetailsFragment"
+            app:destination="@id/personDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/personDetailsFragment"
+        android:name="com.yelloco.movieapp.ui.PersonDetailsFragment"
+        android:label="PersonDetailsFragment" />
 </navigation>

@@ -3,7 +3,7 @@ package com.yelloco.movieapp.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.PagedList
-import com.yelloco.movieapp.PopularPeopleRepository
+import com.yelloco.movieapp.repository.PopularPeopleRepository
 import com.yelloco.movieapp.models.popular.Person
 import com.yelloco.movieapp.network.NetworkingState
 import io.reactivex.disposables.CompositeDisposable

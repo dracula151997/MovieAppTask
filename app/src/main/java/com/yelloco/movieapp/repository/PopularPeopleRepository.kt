@@ -1,4 +1,4 @@
-package com.yelloco.movieapp
+package com.yelloco.movieapp.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations

@@ -17,7 +17,6 @@
 
         <ImageView
             android:id="@+id/person_image_view"
-            loadProfileImage500="@{person.profilePath}"
             android:layout_width="150dp"
             android:layout_height="200dp"
             android:scaleType="fitXY"
@@ -32,7 +31,6 @@
             android:layout_marginEnd="16dp"
             android:layout_toEndOf="@id/person_image_view"
             android:layout_toRightOf="@id/person_image_view"
-            android:text="@{person.name}"
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             android:textColor="@android:color/black" />
 
@@ -57,8 +55,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_toEndOf="@id/person_image_view"
-            android:layout_toRightOf="@id/person_image_view"
-            android:text="@{person.knownForDepartment}" />
+            android:layout_toRightOf="@id/person_image_view" />
 
         <TextView
             android:id="@+id/birthday_txt"
@@ -81,8 +78,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_toEndOf="@id/person_image_view"
-            android:layout_toRightOf="@id/person_image_view"
-            android:text="@{person.birthday}" />
+            android:layout_toRightOf="@id/person_image_view" />
 
         <TextView
             android:id="@+id/place_of_birth_txt"
@@ -106,8 +102,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
             android:layout_toEndOf="@id/person_image_view"
-            android:layout_toRightOf="@id/person_image_view"
-            android:text="@{person.placeOfBirth}" />
+            android:layout_toRightOf="@id/person_image_view" />
 
 
         <TextView
@@ -132,7 +127,6 @@
             android:layout_marginEnd="8dp"
             android:gravity="start"
             android:lines="8"
-            android:text="@{person.biography}"
             android:textAlignment="textStart"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 

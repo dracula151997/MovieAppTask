@@ -1,12 +1,15 @@
 package com.yelloco.movieapp.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import com.yelloco.movieapp.R
+import com.yelloco.movieapp.adapters.OnItemClickListener
 import com.yelloco.movieapp.adapters.PopularPeopleAdapter
 import com.yelloco.movieapp.network.NetworkingState
 import com.yelloco.movieapp.viewmodel.PopularPeopleViewModel
@@ -30,7 +33,18 @@ class PopularPeopleFragment : Fragment() {
     }
 
     private fun populatePeopleRecyclerView() {
-        val popularPeopleAdapter = PopularPeopleAdapter(requireContext())
+        val popularPeopleAdapter =
+            PopularPeopleAdapter(requireContext(), object : OnItemClickListener {
+                override fun invoke(view: View, personId: Int) {
+                    val bundle = Bundle()
+                    bundle.putInt("PERSON_ID", personId)
+                    Navigation.findNavController(view)
+                        .navigate(
+                            R.id.action_popularPeopleFragment_to_personDetailsFragment,
+                            bundle
+                        )
+                }
+            })
         val gridLayoutManager = GridLayoutManager(requireContext(), 3)
 
         gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {

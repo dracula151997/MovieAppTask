@@ -11,7 +11,7 @@ import com.yelloco.movieapp.R
 import com.yelloco.movieapp.models.popular.Person
 import com.yelloco.movieapp.network.NetworkingState
 
-class PopularPeopleAdapter(val context: Context) :
+class PopularPeopleAdapter(val context: Context, val itemClickListener: OnItemClickListener) :
     PagedListAdapter<Person, RecyclerView.ViewHolder>(diffCallback()) {
 
     val PEOPLE_VIEW_TYPE = 1
@@ -24,7 +24,7 @@ class PopularPeopleAdapter(val context: Context) :
 
         if (viewType == PEOPLE_VIEW_TYPE) {
             view = layoutInflater.inflate(R.layout.list_item_popular_people, parent, false)
-            return PopularPeopleViewHolder(view)
+            return PopularPeopleViewHolder(view, itemClickListener)
         } else {
             view = layoutInflater.inflate(R.layout.layout_network_state, parent, false)
             return NetworkStateViewHolder(view)
@@ -32,10 +32,9 @@ class PopularPeopleAdapter(val context: Context) :
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        if (getItemViewType(position) == PEOPLE_VIEW_TYPE)
-        {
+        if (getItemViewType(position) == PEOPLE_VIEW_TYPE) {
             (holder as PopularPeopleViewHolder).bind(getItem(position)!!, context)
-        }else{
+        } else {
             (holder as NetworkStateViewHolder).bind(networkState!!)
         }
     }
