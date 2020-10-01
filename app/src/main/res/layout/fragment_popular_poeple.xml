@@ -1,33 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.PopularPeopleFragment">
 
     <ProgressBar
         android:id="@+id/loading_data_progress_bar"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/progress_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:visibility="gone"/>
+        android:layout_centerInParent="true"
+        android:layout_below="@id/loading_data_progress_bar"
+        android:layout_marginTop="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+        android:visibility="gone"
+        android:textAlignment="center" />
 
     <TextView
         android:id="@+id/error_msg_text_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_centerInParent="true"
         android:text="@string/connection_problem"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/popular_people_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/popular_people_recycler"
-        tools:listitem="@layout/list_item_popular_people"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:spanCount="3"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"/>
+        tools:listitem="@layout/list_item_popular_people" />
 
 
-</FrameLayout>
+</RelativeLayout>

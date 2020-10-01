@@ -9,10 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
-import com.bumptech.glide.Glide
 import com.yelloco.movieapp.R
-import com.yelloco.movieapp.adapters.OnImageClickListener
+import com.yelloco.movieapp.Utils
 import com.yelloco.movieapp.adapters.PersonImagesAdapter
+import com.yelloco.movieapp.adapters.listeners.OnImageClickListener
+import com.yelloco.movieapp.network.NetworkingState
 import com.yelloco.movieapp.network.PROFILE_IMAGE_URL_500
 import com.yelloco.movieapp.viewmodel.PersonDetailsViewModel
 import com.yelloco.movieapp.viewmodel.PersonImagesViewModel
@@ -48,7 +49,7 @@ class PersonDetailsFragment : Fragment() {
     private fun fetchPersonImages() {
         val profileImagesAdapter = PersonImagesAdapter(object : OnImageClickListener {
             override fun invoke(view: View, imagePath: String) {
-                var bundle = Bundle()
+                val bundle = Bundle()
                 bundle.putString("IMAGE_PATH", imagePath)
                 Navigation.findNavController(view)
                     .navigate(R.id.action_personDetailsFragment_to_originalPhotoFragment, bundle)
@@ -69,11 +70,7 @@ class PersonDetailsFragment : Fragment() {
 
         personDetailsViewModel.fetchPersonDetails(personID).observe(viewLifecycleOwner, Observer {
             with(it) {
-                Glide.with(requireActivity())
-                    .load(PROFILE_IMAGE_URL_500 + profilePath)
-                    .placeholder(R.drawable.placeholder)
-                    .error(R.drawable.placeholder)
-                    .into(person_image_view)
+                Utils.loadImage(person_image_view, PROFILE_IMAGE_URL_500 + profilePath)
                 person_name_tv.text = name
                 known_for_tv.text = knownForDepartment
                 birthday_tv.text = birthday
@@ -83,7 +80,15 @@ class PersonDetailsFragment : Fragment() {
         })
 
         personDetailsViewModel.networkState.observe(viewLifecycleOwner, Observer {
+            if (it == NetworkingState.LOADING) {
+                person_details_progress_bar.visibility = View.VISIBLE
+                personal_details_network_state_msg.visibility = View.VISIBLE
+                personal_details_network_state_msg.text = it.message
 
+            } else {
+                person_details_progress_bar.visibility = View.GONE
+                personal_details_network_state_msg.visibility = View.GONE
+            }
         })
     }
 }

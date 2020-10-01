@@ -35,7 +35,6 @@ class PersonImageProfilesDataSource(
                     profileImagesMutableLiveData.postValue(it)
                 }, {
                     networkingStateMutableLiveData.postValue(NetworkingState.ERROR)
-                    Log.e("TAG", "fetchProfileImages: ", it)
                 })
         )
     }

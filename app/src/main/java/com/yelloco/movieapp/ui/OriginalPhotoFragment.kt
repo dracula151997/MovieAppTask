@@ -19,6 +19,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 import com.yelloco.movieapp.R
+import com.yelloco.movieapp.Utils
 import com.yelloco.movieapp.network.ORIGINAL_PROFILE_BASE_URL
 import kotlinx.android.synthetic.main.fragment_original_photo.*
 import java.io.File
@@ -44,11 +45,7 @@ class OriginalPhotoFragment : Fragment() {
         if (arguments != null)
             imagePath = arguments.getString("IMAGE_PATH", "")
 
-        Glide.with(requireActivity())
-            .load(ORIGINAL_PROFILE_BASE_URL + imagePath)
-            .error(R.drawable.placeholder)
-            .placeholder(R.drawable.placeholder)
-            .into(original_photo_image_view)
+        Utils.loadImage(original_photo_image_view, ORIGINAL_PROFILE_BASE_URL + imagePath)
 
         save_photo_in_gallery.setOnClickListener {
             downloadImage(ORIGINAL_PROFILE_BASE_URL + imagePath)
@@ -59,6 +56,7 @@ class OriginalPhotoFragment : Fragment() {
         if (verifyPermissions() == false) {
             return
         }
+
         val dirPath: String = Environment.getExternalStorageDirectory().getAbsolutePath()
             .toString() + "/" + getString(R.string.app_name) + "/"
         val dir = File(dirPath)
@@ -94,10 +92,10 @@ class OriginalPhotoFragment : Fragment() {
             successDirCreated = storageDir.mkdir()
         }
         if (successDirCreated) {
-            val imageFile: File = File(storageDir, imageFileName)
+            val imageFile = File(storageDir, imageFileName)
             val savedImagePath = imageFile.absolutePath
             try {
-                val fOut: OutputStream = FileOutputStream(imageFile)
+                val fOut: OutputStream = FileOutputStream(savedImagePath)
                 bitmap?.compress(Bitmap.CompressFormat.JPEG, 100, fOut)
                 fOut.close()
                 Toast.makeText(requireContext(), "Image Saved!", Toast.LENGTH_SHORT).show()
@@ -124,6 +122,17 @@ class OriginalPhotoFragment : Fragment() {
             return false
         }
         return true
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            downloadImage(ORIGINAL_PROFILE_BASE_URL + imagePath)
+        }
     }
 
 

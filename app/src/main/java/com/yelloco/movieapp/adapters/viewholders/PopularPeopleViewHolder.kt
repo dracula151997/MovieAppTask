@@ -1,10 +1,10 @@
-package com.yelloco.movieapp.adapters
+package com.yelloco.movieapp.adapters.viewholders
 
 import android.content.Context
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.yelloco.movieapp.R
+import com.yelloco.movieapp.Utils
+import com.yelloco.movieapp.adapters.listeners.OnItemClickListener
 import com.yelloco.movieapp.models.popular.Person
 import com.yelloco.movieapp.network.PROFILE_IMAGE_URL_500
 import kotlinx.android.synthetic.main.list_item_popular_people.view.*
@@ -14,11 +14,10 @@ class PopularPeopleViewHolder(view: View, val itemClick: OnItemClickListener) :
     fun bind(person: Person, context: Context) {
         with(person) {
             itemView.list_item_popular_people_text.text = name
-            Glide.with(itemView.context)
-                .load(PROFILE_IMAGE_URL_500 + profilePath)
-                .error(R.drawable.placeholder)
-                .placeholder(R.drawable.placeholder)
-                .into(itemView.list_item_popular_people_image)
+            Utils.loadImage(
+                itemView.list_item_popular_people_image,
+                PROFILE_IMAGE_URL_500 + profilePath
+            )
             itemView.setOnClickListener { itemClick(itemView, id) }
         }
 

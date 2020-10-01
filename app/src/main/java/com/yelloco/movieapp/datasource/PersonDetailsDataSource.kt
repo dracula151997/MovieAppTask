@@ -1,6 +1,5 @@
 package com.yelloco.movieapp.datasource
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.yelloco.movieapp.models.details.PersonDetailsResponse
@@ -10,8 +9,8 @@ import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.schedulers.Schedulers
 
 class PersonDetailsDataSource(
-    val apiService: RetrofitClient,
-    val compositeDisposable: CompositeDisposable
+    private val apiService: RetrofitClient,
+    private val compositeDisposable: CompositeDisposable
 ) {
 
     private val personDetailsMutableLiveData = MutableLiveData<PersonDetailsResponse>()
@@ -34,7 +33,6 @@ class PersonDetailsDataSource(
                     networkStateMutableLiveData.postValue(NetworkingState.LOADED)
                     personDetailsMutableLiveData.postValue(it)
                 }, {
-                    Log.d("TAG", "fetchPersonDetails: Something went error ${it}")
                     networkStateMutableLiveData.postValue(NetworkingState.ERROR)
                 })
         )

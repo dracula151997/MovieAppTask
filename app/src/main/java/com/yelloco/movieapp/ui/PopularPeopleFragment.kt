@@ -1,7 +1,6 @@
 package com.yelloco.movieapp.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import com.yelloco.movieapp.R
-import com.yelloco.movieapp.adapters.OnItemClickListener
 import com.yelloco.movieapp.adapters.PopularPeopleAdapter
+import com.yelloco.movieapp.adapters.listeners.OnItemClickListener
 import com.yelloco.movieapp.network.NetworkingState
 import com.yelloco.movieapp.viewmodel.PopularPeopleViewModel
 import kotlinx.android.synthetic.main.fragment_popular_poeple.*
@@ -64,8 +63,16 @@ class PopularPeopleFragment : Fragment() {
         })
 
         popularPeopleViewModel.networkingState.observe(viewLifecycleOwner, {
-            loading_data_progress_bar.visibility =
-                if (popularPeopleViewModel.listIsEmpty() && it == NetworkingState.LOADING) View.VISIBLE else View.GONE
+
+            if (popularPeopleViewModel.listIsEmpty() && it == NetworkingState.LOADING) {
+                loading_data_progress_bar.visibility = View.VISIBLE
+                progress_msg.visibility = View.VISIBLE
+                progress_msg.text = it.message
+
+            } else {
+                loading_data_progress_bar.visibility = View.GONE
+                progress_msg.visibility = View.GONE
+            }
             error_msg_text_view.visibility =
                 if (popularPeopleViewModel.listIsEmpty() && it == NetworkingState.ERROR) View.VISIBLE else View.GONE
 

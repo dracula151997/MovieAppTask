@@ -4,9 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.yelloco.movieapp.R
+import com.yelloco.movieapp.adapters.listeners.OnImageClickListener
+import com.yelloco.movieapp.adapters.viewholders.ProfileImageViewHolder
 import com.yelloco.movieapp.models.image.ProfileImage
 
-class PersonImagesAdapter(val onImageClickListener: OnImageClickListener) :
+class PersonImagesAdapter(private val onImageClickListener: OnImageClickListener) :
     RecyclerView.Adapter<ProfileImageViewHolder>() {
 
     var images: List<ProfileImage> = listOf()

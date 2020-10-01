@@ -29,18 +29,15 @@ class PopularPeopleDataSource(
             apiService.getClient().getPopularPeople(page)
                 .subscribeOn(Schedulers.io())
                 .subscribe({
-                    Log.d("TAG", "loadInitial: ${it}")
                     callback.onResult(it.results, null, page + 1)
                     networkStateMutableLiveData.postValue(NetworkingState.LOADED)
                 }, {
-                    Log.e("TAG", "loadInitial: Something went error", it)
                     networkStateMutableLiveData.postValue(NetworkingState.ERROR)
                 })
         )
     }
 
     override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Person>) {
-        TODO("Not yet implemented")
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Person>) {
@@ -57,7 +54,6 @@ class PopularPeopleDataSource(
                     }
 
                 }, {
-                    Log.e("TAG", "loadAfter: Something went error", it)
                     networkStateMutableLiveData.postValue(NetworkingState.ERROR)
                 })
         )

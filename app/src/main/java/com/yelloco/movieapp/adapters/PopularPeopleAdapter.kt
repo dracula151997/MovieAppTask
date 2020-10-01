@@ -8,10 +8,16 @@ import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.yelloco.movieapp.R
+import com.yelloco.movieapp.adapters.listeners.OnItemClickListener
+import com.yelloco.movieapp.adapters.viewholders.NetworkStateViewHolder
+import com.yelloco.movieapp.adapters.viewholders.PopularPeopleViewHolder
 import com.yelloco.movieapp.models.popular.Person
 import com.yelloco.movieapp.network.NetworkingState
 
-class PopularPeopleAdapter(val context: Context, private val itemClickListener: OnItemClickListener) :
+class PopularPeopleAdapter(
+    val context: Context,
+    private val itemClickListener: OnItemClickListener
+) :
     PagedListAdapter<Person, RecyclerView.ViewHolder>(diffCallback()) {
 
     val PEOPLE_VIEW_TYPE = 1

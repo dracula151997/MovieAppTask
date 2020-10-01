@@ -1,4 +1,4 @@
-package com.yelloco.movieapp.adapters
+package com.yelloco.movieapp.adapters.viewholders
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

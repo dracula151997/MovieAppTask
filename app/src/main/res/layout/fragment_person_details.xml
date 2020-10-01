@@ -15,6 +15,23 @@
         android:layout_height="match_parent"
         tools:context=".ui.PersonDetailsFragment">
 
+        <ProgressBar
+            android:id="@+id/person_details_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/person_details_progress_bar"
+            android:layout_centerInParent="true"
+            android:layout_marginTop="8dp"
+            android:id="@+id/personal_details_network_state_msg"
+            android:gravity="center"
+            android:textAlignment="center" />
+
         <ImageView
             android:id="@+id/person_image_view"
             android:layout_width="150dp"

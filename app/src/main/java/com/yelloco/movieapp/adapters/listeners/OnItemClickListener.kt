@@ -1,4 +1,4 @@
-package com.yelloco.movieapp.adapters
+package com.yelloco.movieapp.adapters.listeners
 
 import android.view.View
 
